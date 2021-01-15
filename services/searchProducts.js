@@ -4,7 +4,7 @@ const { transformsProducts, transformsProduct } = require('./transforms/products
 const { apiUrl } = require('../config');
 
 const getAllProductsByQuery = (page, limit) => {
-    return axios.get(`${apiUrl}sites/MLA/search?q=${page}`).then((res) => { // servicios -> pruebas unitarias con nock
+    return axios.get(`${apiUrl}sites/MLA/search?q=${page}`).then((res) => { 
         return res.data;
     }).then((response) => ({
         filters: transformCategories(response.filters),

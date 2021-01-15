@@ -1,6 +1,6 @@
 const { getAllProductsByQuery, getAllProductsById } = require('../services/searchProducts');
 
-const buscarProductos = async (req, res, next) => { // pruebas e2e con supertest mockeando servicios
+const buscarProductos = async (req, res, next) => { 
   try {
     const { q: page } = req.query;
     const { categories, items } = await getAllProductsByQuery(page, 4);
