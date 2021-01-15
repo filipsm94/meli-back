@@ -1,18 +1,11 @@
 const request = require('supertest');
-const express = require('express');
 const nock = require('nock');
 const { responseProductsByQueryMock, responseProductByIdMock, responseProductByIdDescriptionMock } = require('../mocks/searchProducts.mock')
-const app = express();
-
-app.use('/api/items', require('../routes/items.routes'));
+const app = require('../server');
 
 describe("Items Controller", () => {
 
-  afterEach(() => {
-    nock.restore
-  });
-
-  test('buscarUsuarios', async (done) => {
+  test('Buscar Productos', async (done) => {
     const query = 'apple'
     nock("https://api.mercadolibre.com")
       //define the method to be intercepted
@@ -28,7 +21,7 @@ describe("Items Controller", () => {
     done();
   })
 
-  test('buscarUsuario', async (done) => {
+  test('Buscar producto', async (done) => {
     const id = 'apple'
     nock("https://api.mercadolibre.com")
       //define the method to be intercepted

@@ -19,6 +19,10 @@ app.use(cors({
 app.use('/api/items',require('./routes/items.routes'));
 
 //start server
-app.listen(app.get('port'),()=>{
-  console.log("Run server on port  = ", app.get('port'));
-});
+if(!module.parent){
+  app.listen(app.get('port'),()=>{
+    console.log("Run server on port  = ", app.get('port'));
+  });
+}
+
+module.exports = app;
